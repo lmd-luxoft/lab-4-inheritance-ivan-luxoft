@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Chess.ChessModel;
+using System;
 
 namespace Chess
 {
@@ -14,7 +15,7 @@ namespace Chess
         public void RookShouldBeCorrectMove()
         {
             ChessFigure figure = ChessFigureFactory.CreateFigure(ChessFigureTypes.ROOK, "E2");
-            Assert.AreEqual(true,figure.Move("C2"));
+            Assert.AreEqual(true, figure.Move("C2"));
         }
         [Test]
         public void RookShouldBeIncorrectMove()
@@ -99,6 +100,20 @@ namespace Chess
         {
             ChessFigure figure = ChessFigureFactory.CreateFigure(ChessFigureTypes.QUEEN, "D1");
             Assert.AreEqual(false, figure.Move("E3"));
+        }
+        [Test]
+        public void CreateFigureWithUncorrectCurrentCoordShouldThrowException()
+        {
+            var coord = "D9";
+            TestDelegate createFigure = () => ChessFigureFactory.CreateFigure(ChessFigureTypes.QUEEN, coord);
+            Assert.Throws<ArgumentOutOfRangeException>(createFigure, $"Coordinate \"{coord}\" out of range");
+        }
+        [Test]
+        public void MoveWithSameCoordinateShouldReturnError()
+        {
+            var coord = "D8";
+            ChessFigure figure = ChessFigureFactory.CreateFigure(ChessFigureTypes.PAWN, coord);
+            Assert.AreEqual(false, figure.Move(coord));
         }
     }
 }
