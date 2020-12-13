@@ -40,7 +40,16 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChessFigure.cs" />
+    <Compile Include="ChessModel\ChessFigureFactory.cs" />
+    <Compile Include="ChessModel\ChessFigure.cs" />
+    <Compile Include="ChessModel\ChessFigureTypes.cs" />
+    <Compile Include="ChessModel\IMoveStrategy.cs" />
+    <Compile Include="ChessModel\MoveStrategyKnight.cs" />
+    <Compile Include="ChessModel\MoveStrategyPawn.cs" />
+    <Compile Include="ChessModel\MoveStrategyRook.cs" />
+    <Compile Include="ChessModel\MoveStrategyBishop.cs" />
+    <Compile Include="ChessModel\MoveStrategyQueen.cs" />
+    <Compile Include="ChessModel\MoveStrategyKing.cs" />
     <Compile Include="TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
